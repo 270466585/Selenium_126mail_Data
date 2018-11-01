@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>126邮箱自动化测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>126邮箱自动化测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-06-16 21:02:39</p>
+<p class='attribute'><strong>Duration:</strong> 0:11:21.700991</p>
+<p class='attribute'><strong>Status:</strong> Pass 19 Error 3</p>
+
+<p class='description'>126邮箱自动化测试报告</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestCases.Login_Cases.test_Login.LoginTest: 126邮箱登录测试</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',4)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_001: 正流程:输入正确的账号密码</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: [2018-06-16 21:02:50,061] - [INFO] - test_login_001 - run: 126邮箱登录测试
+[2018-06-16 21:02:50,062] - [INFO] - test_login_001 - run: =========================
+[2018-06-16 21:02:50,062] - [INFO] - test_login_001 - run: 输入正确的账号密码
+[2018-06-16 21:02:50,063] - [INFO] - test_login_001 - run: 执行开始
+[2018-06-16 21:02:55,677] - [INFO] - test_login_001 - run: 执行成功
+[2018-06-16 21:02:55,678] - [INFO] - test_login_001 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_002: 异常流程:账号密码都不输入</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: [2018-06-16 21:03:08,971] - [INFO] - test_login_002 - run: 账号密码都不输入
+[2018-06-16 21:03:08,973] - [INFO] - test_login_002 - run: 执行开始
+[2018-06-16 21:03:14,118] - [INFO] - test_login_002 - run: 执行成功
+[2018-06-16 21:03:14,121] - [INFO] - test_login_002 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_003: 异常流程:输入账号不输密码</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: [2018-06-16 21:03:26,971] - [INFO] - test_login_003 - run: 输入账号不输密码
+[2018-06-16 21:03:26,972] - [INFO] - test_login_003 - run: 执行开始
+[2018-06-16 21:03:32,349] - [INFO] - test_login_003 - run: 执行成功
+[2018-06-16 21:03:32,351] - [INFO] - test_login_003 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_login_004: 异常流程:输入账号密码输入错误</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: [2018-06-16 21:03:45,118] - [INFO] - test_login_004 - run: 输入账号密码输入错误
+[2018-06-16 21:03:45,119] - [INFO] - test_login_004 - run: 执行开始
+[2018-06-16 21:03:50,676] - [INFO] - test_login_004 - run: 执行成功
+[2018-06-16 21:03:50,680] - [INFO] - test_login_004 - run: =========================
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestCases.SendEmail_Cases.test_SendEmail.SendEmailTest: 126邮箱发送邮件测试</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',4)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sendemail_001: 正流程:编写收件人、主题、内容</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: [2018-06-16 21:05:15,632] - [INFO] - test_sendemail_001 - run: 126邮箱发送邮件测试
+[2018-06-16 21:05:15,635] - [INFO] - test_sendemail_001 - run: =========================
+[2018-06-16 21:05:15,638] - [INFO] - test_sendemail_001 - run: 编写收件人主题内容
+[2018-06-16 21:05:15,642] - [INFO] - test_sendemail_001 - run: 执行开始
+[2018-06-16 21:05:19,835] - [INFO] - test_sendemail_001 - run: 执行成功
+[2018-06-16 21:05:19,836] - [INFO] - test_sendemail_001 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sendemail_002: 异常流程:收件人、主题、内容都不输入</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: [2018-06-16 21:05:40,402] - [INFO] - test_sendemail_002 - run: 收件人主题内容都不输入
+[2018-06-16 21:05:40,404] - [INFO] - test_sendemail_002 - run: 执行开始
+[2018-06-16 21:05:43,515] - [INFO] - test_sendemail_002 - run: 执行成功
+[2018-06-16 21:05:43,516] - [INFO] - test_sendemail_002 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sendemail_003: 异常流程:输入收件人内容不输入主题</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: [2018-06-16 21:06:03,883] - [INFO] - test_sendemail_003 - run: 输入收件人内容不输入主题
+[2018-06-16 21:06:03,885] - [INFO] - test_sendemail_003 - run: 执行开始
+[2018-06-16 21:06:12,296] - [INFO] - test_sendemail_003 - run: 执行成功
+[2018-06-16 21:06:12,298] - [INFO] - test_sendemail_003 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sendemail_004: 异常流程:输入内容不输入收件人主题</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+        pass</a>
+
+    <div id='div_pt2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.4: [2018-06-16 21:06:32,483] - [INFO] - test_sendemail_004 - run: 输入内容不输入收件人主题
+[2018-06-16 21:06:32,484] - [INFO] - test_sendemail_004 - run: 执行开始
+[2018-06-16 21:06:33,134] - [INFO] - test_sendemail_004 - run: 执行成功
+[2018-06-16 21:06:33,134] - [INFO] - test_sendemail_004 - run: =========================
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestCases.HongQiEmail_Cases.test_HongQiEmail.HongQiTest: 126邮箱红旗邮件测试</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_hongqi: 正流程:设定旗帜颜色</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: [2018-06-16 21:06:49,486] - [INFO] - test_hongqi - run: 126邮箱红旗邮件测试
+[2018-06-16 21:06:49,489] - [INFO] - test_hongqi - run: =========================
+[2018-06-16 21:06:49,492] - [INFO] - test_hongqi - run: 执行开始
+[2018-06-16 21:06:53,410] - [INFO] - test_hongqi - run: 选择的旗帜是【粉旗】
+[2018-06-16 21:06:59,725] - [INFO] - test_hongqi - run: 执行成功
+[2018-06-16 21:06:59,726] - [INFO] - test_hongqi - run: =========================
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestCases.TongXun_Cases.test_TongXun.TongXunTest: 126邮箱通讯录测试</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',5)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_tongxun_001: 正流程:创建删除联系人</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: [2018-06-16 21:07:25,783] - [INFO] - test_tongxun_001 - run: 126邮箱通讯录测试
+[2018-06-16 21:07:25,786] - [INFO] - test_tongxun_001 - run: =========================
+[2018-06-16 21:07:25,789] - [INFO] - test_tongxun_001 - run: 创建删除联系人
+[2018-06-16 21:07:25,793] - [INFO] - test_tongxun_001 - run: 执行开始
+[2018-06-16 21:07:29,941] - [INFO] - test_tongxun_001 - run: 联系人创建成功，信息如下:
+[2018-06-16 21:07:29,944] - [INFO] - test_tongxun_001 - run: 创建姓名:luozelin
+[2018-06-16 21:07:29,946] - [INFO] - test_tongxun_001 - run: 创建邮箱地址:14298246@qq.com
+[2018-06-16 21:07:29,949] - [INFO] - test_tongxun_001 - run: 创建电话号码:17318971827
+[2018-06-16 21:07:29,951] - [INFO] - test_tongxun_001 - run: 创建备注信息:自动化测试-创建联系人
+[2018-06-16 21:07:31,320] - [INFO] - test_tongxun_001 - run: 执行成功
+[2018-06-16 21:07:31,322] - [INFO] - test_tongxun_001 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_tongxun_002: 异常流程:创建联系人不输入任何信息</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+        pass</a>
+
+    <div id='div_pt4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.2: [2018-06-16 21:07:56,589] - [INFO] - test_tongxun_002 - run: 创建联系人不输入任何信息
+[2018-06-16 21:07:56,592] - [INFO] - test_tongxun_002 - run: 执行开始
+[2018-06-16 21:07:56,710] - [INFO] - test_tongxun_002 - run: 执行成功
+[2018-06-16 21:07:56,711] - [INFO] - test_tongxun_002 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_tongxun_003: 异常流程:创建联系人只输入姓名</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.3')" >
+        pass</a>
+
+    <div id='div_pt4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.3: [2018-06-16 21:08:22,189] - [INFO] - test_tongxun_003 - run: 创建联系人只输入姓名
+[2018-06-16 21:08:22,192] - [INFO] - test_tongxun_003 - run: 执行开始
+[2018-06-16 21:08:22,526] - [INFO] - test_tongxun_003 - run: 执行成功
+[2018-06-16 21:08:22,527] - [INFO] - test_tongxun_003 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_tongxun_004: 异常流程:创建联系人只输入手机号码</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.4')" >
+        pass</a>
+
+    <div id='div_pt4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.4: [2018-06-16 21:08:47,506] - [INFO] - test_tongxun_004 - run: 创建联系人只输入手机号码
+[2018-06-16 21:08:47,510] - [INFO] - test_tongxun_004 - run: 执行开始
+[2018-06-16 21:08:47,959] - [INFO] - test_tongxun_004 - run: 执行成功
+[2018-06-16 21:08:47,960] - [INFO] - test_tongxun_004 - run: *************************
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_tongxun_005: 异常流程:创建联系人只输入姓名手机号码</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.5')" >
+        pass</a>
+
+    <div id='div_pt4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.5: [2018-06-16 21:09:29,028] - [INFO] - test_tongxun_005 - run: 创建联系人只输入姓名手机号码
+[2018-06-16 21:09:29,032] - [INFO] - test_tongxun_005 - run: 执行开始
+[2018-06-16 21:09:29,533] - [INFO] - test_tongxun_005 - run: 执行成功
+[2018-06-16 21:09:29,535] - [INFO] - test_tongxun_005 - run: =========================
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestCases.DaiBanEmail_Cases.test_DaiBanEmail.DaiBanTest: 126邮箱待办邮件测试</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_daiban: 正流程:进入待办邮件模块并刷新</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: [2018-06-16 21:09:48,533] - [INFO] - test_daiban - run: 126邮箱待办邮件测试
+[2018-06-16 21:09:48,534] - [INFO] - test_daiban - run: =========================
+[2018-06-16 21:09:48,536] - [INFO] - test_daiban - run: 待办邮件刷新
+[2018-06-16 21:09:48,537] - [INFO] - test_daiban - run: 执行开始
+[2018-06-16 21:09:53,635] - [INFO] - test_daiban - run: 执行成功
+[2018-06-16 21:09:53,636] - [INFO] - test_daiban - run: =========================
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>unittest.suite._ErrorHolder</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c6',3)">Detail</a></td>
+</tr>
+
+<tr id='ft6.1' class='none'>
+    <td class='errorCase'><div class='testcase'>XiaoLvAppTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.1')" >
+        error</a>
+
+    <div id='div_ft6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.1: [2018-06-16 21:09:48,533] - [INFO] - test_daiban - run: 126邮箱待办邮件测试
+[2018-06-16 21:09:48,534] - [INFO] - test_daiban - run: =========================
+[2018-06-16 21:09:48,536] - [INFO] - test_daiban - run: 待办邮件刷新
+[2018-06-16 21:09:48,537] - [INFO] - test_daiban - run: 执行开始
+[2018-06-16 21:09:53,635] - [INFO] - test_daiban - run: 执行成功
+[2018-06-16 21:09:53,636] - [INFO] - test_daiban - run: =========================
+Traceback (most recent call last):
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\TestCases\AppCenter_Cases\test_XiaoLvApp.py", line 23, in setUpClass
+    cls.xiaolvapp_page.go_appcenter()
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\Page\AppCenter_Page\AppCenterPage.py", line 68, in go_appcenter
+    self.elementClick(self.app_center_loc)
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\Page\BasePage.py", line 154, in elementClick
+    element.click()
+AttributeError: 'NoneType' object has no attribute 'click'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.2' class='none'>
+    <td class='errorCase'><div class='testcase'>GongJuAppTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.2')" >
+        error</a>
+
+    <div id='div_ft6.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.2: [2018-06-16 21:09:48,533] - [INFO] - test_daiban - run: 126邮箱待办邮件测试
+[2018-06-16 21:09:48,534] - [INFO] - test_daiban - run: =========================
+[2018-06-16 21:09:48,536] - [INFO] - test_daiban - run: 待办邮件刷新
+[2018-06-16 21:09:48,537] - [INFO] - test_daiban - run: 执行开始
+[2018-06-16 21:09:53,635] - [INFO] - test_daiban - run: 执行成功
+[2018-06-16 21:09:53,636] - [INFO] - test_daiban - run: =========================
+Traceback (most recent call last):
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\TestCases\AppCenter_Cases\test_GongJuApp.py", line 23, in setUpClass
+    cls.gongjuapp_page.go_appcenter()
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\Page\AppCenter_Page\AppCenterPage.py", line 68, in go_appcenter
+    self.elementClick(self.app_center_loc)
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\Page\BasePage.py", line 154, in elementClick
+    element.click()
+AttributeError: 'NoneType' object has no attribute 'click'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.3' class='none'>
+    <td class='errorCase'><div class='testcase'>GouTongAppTest)</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.3')" >
+        error</a>
+
+    <div id='div_ft6.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.3: [2018-06-16 21:09:48,533] - [INFO] - test_daiban - run: 126邮箱待办邮件测试
+[2018-06-16 21:09:48,534] - [INFO] - test_daiban - run: =========================
+[2018-06-16 21:09:48,536] - [INFO] - test_daiban - run: 待办邮件刷新
+[2018-06-16 21:09:48,537] - [INFO] - test_daiban - run: 执行开始
+[2018-06-16 21:09:53,635] - [INFO] - test_daiban - run: 执行成功
+[2018-06-16 21:09:53,636] - [INFO] - test_daiban - run: =========================
+Traceback (most recent call last):
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\TestCases\AppCenter_Cases\test_GouTongApp.py", line 23, in setUpClass
+    cls.goutongapp_page.go_appcenter()
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\Page\AppCenter_Page\AppCenterPage.py", line 68, in go_appcenter
+    self.elementClick(self.app_center_loc)
+  File "D:\PyCharm\Project\WEBautotest\Selenium_126mail_Data\Page\BasePage.py", line 154, in elementClick
+    element.click()
+AttributeError: 'NoneType' object has no attribute 'click'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestCases.AppCenter_Cases.test_ZiXunApp.ZiXunAppTest: 126邮箱应用中心app测试</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',2)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addApp: 正流程:添加咨询类app应用</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: [2018-06-16 21:12:43,467] - [INFO] - test_addApp - run: 126邮箱应用中心app测试
+[2018-06-16 21:12:43,468] - [INFO] - test_addApp - run: =========================
+[2018-06-16 21:12:43,469] - [INFO] - test_addApp - run: 添加删除咨询类app应用
+[2018-06-16 21:12:43,470] - [INFO] - test_addApp - run: 执行开始
+[2018-06-16 21:12:51,067] - [INFO] - test_addApp - run: 【网易云课堂】应用添加成功
+[2018-06-16 21:12:54,183] - [INFO] - test_addApp - run: 【网易云课堂】应用打开成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delApp: 正流程:删除咨询类app应用</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.2')" >
+        pass</a>
+
+    <div id='div_pt7.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.2: [2018-06-16 21:13:02,356] - [INFO] - test_delApp - run: 【网易云课堂】应用删除成功
+[2018-06-16 21:13:02,358] - [INFO] - test_delApp - run: 执行成功
+[2018-06-16 21:13:02,360] - [INFO] - test_delApp - run: =========================
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>TestCases.AppCenter_Cases.test_YuLeApp.YuLeAppTest: 126邮箱应用中心app测试</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',2)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_addApp: 正流程:添加娱乐类app应用</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        pass</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.1: [2018-06-16 21:13:34,289] - [INFO] - test_addApp - run: 126邮箱应用中心app测试
+[2018-06-16 21:13:34,290] - [INFO] - test_addApp - run: =========================
+[2018-06-16 21:13:34,291] - [INFO] - test_addApp - run: 添加删除娱乐类app应用
+[2018-06-16 21:13:34,291] - [INFO] - test_addApp - run: 执行开始
+[2018-06-16 21:13:41,458] - [INFO] - test_addApp - run: 【网易CC】应用添加成功
+[2018-06-16 21:13:48,669] - [INFO] - test_addApp - run: 【网易CC】应用打开成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delApp: 正流程:删除娱乐类app应用</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.2')" >
+        pass</a>
+
+    <div id='div_pt8.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.2: [2018-06-16 21:13:57,833] - [INFO] - test_delApp - run: 【网易CC】应用删除成功
+[2018-06-16 21:13:57,834] - [INFO] - test_delApp - run: 执行成功
+[2018-06-16 21:13:57,835] - [INFO] - test_delApp - run: =========================
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>22</td>
+    <td>19</td>
+    <td>0</td>
+    <td>3</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
